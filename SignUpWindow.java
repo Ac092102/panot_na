@@ -43,7 +43,6 @@ public class SignUpWindow extends JFrame {
 
         gradientPanel.add(Box.createRigidArea(new Dimension(0, 40)));
 
-        // Username
         usernameField = new JTextField("Username");
         usernameField.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
         usernameField.setFont(new Font("SansSerif", Font.PLAIN, 15));
@@ -53,7 +52,6 @@ public class SignUpWindow extends JFrame {
         gradientPanel.add(usernameField);
         gradientPanel.add(Box.createRigidArea(new Dimension(0, 15)));
 
-        // Password
         passwordField = new JPasswordField("Password");
         passwordField.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
         passwordField.setFont(new Font("SansSerif", Font.PLAIN, 15));
@@ -64,14 +62,12 @@ public class SignUpWindow extends JFrame {
         gradientPanel.add(passwordField);
         gradientPanel.add(Box.createRigidArea(new Dimension(0, 15)));
 
-        // Role
         roleBox = new JComboBox<>(new String[]{"student", "admin"});
         roleBox.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
         roleBox.setFont(new Font("SansSerif", Font.PLAIN, 15));
         gradientPanel.add(roleBox);
         gradientPanel.add(Box.createRigidArea(new Dimension(0, 30)));
 
-        // Sign Up Button
         signUpButton = new JButton("Sign Up");
         signUpButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         signUpButton.setFont(new Font("SansSerif", Font.BOLD, 16));
@@ -87,7 +83,6 @@ public class SignUpWindow extends JFrame {
 
         gradientPanel.add(Box.createRigidArea(new Dimension(0, 30)));
 
-        // Login link
         JLabel loginLabel = new JLabel("Already have an account? Login");
         loginLabel.setFont(new Font("SansSerif", Font.PLAIN, 13));
         loginLabel.setForeground(Color.WHITE);
@@ -167,7 +162,7 @@ public class SignUpWindow extends JFrame {
             String insertSql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(insertSql);
             pstmt.setString(1, username);
-            pstmt.setString(2, password); // In production, hash this!
+            pstmt.setString(2, password); 
             pstmt.setString(3, role);
 
             int rows = pstmt.executeUpdate();

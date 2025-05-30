@@ -46,7 +46,6 @@ public class LoginWindow extends JFrame {
         gradientPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         gradientPanel.add(title);
 
-        // Email Field
         gradientPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         usernameField = new JTextField("Email Address");
         usernameField.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
@@ -56,7 +55,6 @@ public class LoginWindow extends JFrame {
         addPlaceholderListener(usernameField, "Email Address");
         gradientPanel.add(usernameField);
 
-        // Password Field + Eye Icon
         gradientPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         passwordField = new JPasswordField("Password");
         passwordField.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
@@ -71,7 +69,6 @@ public class LoginWindow extends JFrame {
         eyeIcon.setBorder(new EmptyBorder(0, 8, 0, 8));
         eyeIcon.setForeground(Color.DARK_GRAY);
 
-        // Toggle password visibility
         eyeIcon.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 isPasswordVisible = !isPasswordVisible;
@@ -90,7 +87,6 @@ public class LoginWindow extends JFrame {
         passwordPanel.add(eyeIcon, BorderLayout.EAST);
         gradientPanel.add(passwordPanel);
 
-        // Forgot Password
         gradientPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         JLabel forgotLabel = new JLabel("<HTML><U>Forgot Password?</U></HTML>");
         forgotLabel.setFont(new Font("SansSerif", Font.PLAIN, 13));
@@ -98,7 +94,6 @@ public class LoginWindow extends JFrame {
         forgotLabel.setAlignmentX(Component.RIGHT_ALIGNMENT);
         gradientPanel.add(forgotLabel);
 
-        // Login Button
         gradientPanel.add(Box.createRigidArea(new Dimension(0, 25)));
         loginButton = new JButton("Login");
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -111,7 +106,6 @@ public class LoginWindow extends JFrame {
         loginButton.setBorder(BorderFactory.createLineBorder(new Color(120, 90, 200), 2));
         gradientPanel.add(loginButton);
 
-        // Sign up
         gradientPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         JLabel createLabel = new JLabel("Don't have an account? Sign Up Now");
         createLabel.setFont(new Font("SansSerif", Font.PLAIN, 13));

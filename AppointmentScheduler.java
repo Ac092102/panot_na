@@ -25,8 +25,8 @@ public class AppointmentScheduler extends JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 Graphics2D g2d = (Graphics2D) g;
-                Color gradientStart = new Color(123, 104, 238); 
-                Color gradientEnd = new Color(255, 160, 122);   
+                Color gradientStart = new Color(0, 153, 255); 
+                Color gradientEnd = new Color(102, 0, 204);   
                 GradientPaint gp = new GradientPaint(0, 0, gradientStart, 0, getHeight(), gradientEnd);
                 g2d.setPaint(gp);
                 g2d.fillRect(0, 0, getWidth(), getHeight());
@@ -40,7 +40,7 @@ public class AppointmentScheduler extends JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 Graphics2D g2d = (Graphics2D) g;
-                g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.85f));
+                g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.92f));
                 g2d.setColor(Color.WHITE);
                 g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 30, 30);
             }
@@ -54,7 +54,7 @@ public class AppointmentScheduler extends JFrame {
         gbc.insets = new Insets(15, 15, 15, 15);
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        JLabel titleLabel = new JLabel("Appointment Scheduling Form");
+        JLabel titleLabel = new JLabel("📅 Appointment Scheduling Form");
         titleLabel.setFont(new Font("SansSerif", Font.BOLD, 22));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         gbc.gridx = 0;
@@ -65,34 +65,37 @@ public class AppointmentScheduler extends JFrame {
 
         gbc.gridy++;
         gbc.gridx = 0;
-        JLabel nameLabel = new JLabel("Student Name:");
+        JLabel nameLabel = new JLabel("👤 Student Name:");
         nameLabel.setFont(new Font("SansSerif", Font.PLAIN, 16));
         mainPanel.add(nameLabel, gbc);
         gbc.gridx = 1;
         nameField = new JTextField(25);
+        nameField.setFont(new Font("SansSerif", Font.PLAIN, 14));
         mainPanel.add(nameField, gbc);
 
         gbc.gridy++;
         gbc.gridx = 0;
-        JLabel dateLabel = new JLabel("Date (DD/MM/YYYY):");
+        JLabel dateLabel = new JLabel("📅 Date (DD/MM/YYYY):");
         dateLabel.setFont(new Font("SansSerif", Font.PLAIN, 16));
         mainPanel.add(dateLabel, gbc);
         gbc.gridx = 1;
         dateField = new JTextField();
+        dateField.setFont(new Font("SansSerif", Font.PLAIN, 14));
         mainPanel.add(dateField, gbc);
 
         gbc.gridy++;
         gbc.gridx = 0;
-        JLabel timeLabel = new JLabel("Time (HH:MM:SS):");
+        JLabel timeLabel = new JLabel("⏰ Time (HH:MM:SS):");
         timeLabel.setFont(new Font("SansSerif", Font.PLAIN, 16));
         mainPanel.add(timeLabel, gbc);
         gbc.gridx = 1;
         timeField = new JTextField();
+        timeField.setFont(new Font("SansSerif", Font.PLAIN, 14));
         mainPanel.add(timeField, gbc);
 
         gbc.gridy++;
         gbc.gridx = 0;
-        JLabel reasonLabel = new JLabel("Reason:");
+        JLabel reasonLabel = new JLabel("📝 Reason:");
         reasonLabel.setFont(new Font("SansSerif", Font.PLAIN, 16));
         mainPanel.add(reasonLabel, gbc);
         gbc.gridx = 1;
@@ -137,7 +140,7 @@ public class AppointmentScheduler extends JFrame {
             java.sql.Time sqlTime = java.sql.Time.valueOf(timeStr);
 
             try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
-                String sql = "INSERT INTO appointments (student_name, appointment_date, appointment_time, reason) VALUES (?, ?, ?, ?)";
+                String sql = "INSERT INTO appointments (student_name, appointment_date, appointment_time, reason, status) VALUES (?, ?, ?, ?, 'pending')";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, name);
                 pstmt.setDate(2, sqlDate);
@@ -168,5 +171,3 @@ public class AppointmentScheduler extends JFrame {
         SwingUtilities.invokeLater(AppointmentScheduler::new);
     }
 }
-
-

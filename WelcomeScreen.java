@@ -9,17 +9,16 @@ public class WelcomeScreen extends JFrame {
         setSize(350, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setUndecorated(false); // Set to true for frameless look
+        setUndecorated(false);
 
-        // Gradient panel
         JPanel gradientPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 Graphics2D g2d = (Graphics2D) g;
                 int width = getWidth();
                 int height = getHeight();
-                Color color1 = new Color(183, 148, 244); // Light purple
-                Color color2 = new Color(112, 202, 255); // Light blue
+                Color color1 = new Color(183, 148, 244); 
+                Color color2 = new Color(112, 202, 255);
                 GradientPaint gp = new GradientPaint(0, 0, color1, 0, height, color2);
                 g2d.setPaint(gp);
                 g2d.fillRect(0, 0, width, height);
@@ -28,8 +27,7 @@ public class WelcomeScreen extends JFrame {
         gradientPanel.setLayout(new BoxLayout(gradientPanel, BoxLayout.Y_AXIS));
         gradientPanel.setBorder(BorderFactory.createEmptyBorder(60, 30, 30, 30));
 
-        // Logo or icon
-        JLabel logo = new JLabel("◯", SwingConstants.CENTER); // Placeholder logo
+        JLabel logo = new JLabel("◯", SwingConstants.CENTER); 
         logo.setFont(new Font("SansSerif", Font.BOLD, 64));
         logo.setAlignmentX(Component.CENTER_ALIGNMENT);
         gradientPanel.add(logo);
@@ -41,7 +39,6 @@ public class WelcomeScreen extends JFrame {
         gradientPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         gradientPanel.add(appName);
 
-        // Buttons
         JButton loginBtn = createButton("Login", true);
         JButton signupBtn = createButton("Sign Up", false);
 
@@ -50,7 +47,6 @@ public class WelcomeScreen extends JFrame {
         gradientPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         gradientPanel.add(signupBtn);
 
-        // Guest option
         JLabel guestLabel = new JLabel("Continue as a guest", SwingConstants.CENTER);
         guestLabel.setFont(new Font("SansSerif", Font.PLAIN, 14));
         guestLabel.setForeground(Color.WHITE);
@@ -59,20 +55,19 @@ public class WelcomeScreen extends JFrame {
         gradientPanel.add(Box.createRigidArea(new Dimension(0, 40)));
         gradientPanel.add(guestLabel);
 
-        // Button Actions
         loginBtn.addActionListener(e -> {
             new LoginWindow();
             dispose();
         });
 
         signupBtn.addActionListener(e -> {
-            new SignUpWindow(); // Make sure this class exists
+            new SignUpWindow(); 
             dispose();
         });
 
         guestLabel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                new AppointmentScheduler(); // Or guest view
+                new AppointmentScheduler(); 
                 dispose();
             }
         });

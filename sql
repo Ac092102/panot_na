@@ -1,5 +1,4 @@
 CREATE DATABASE school_appointments;
-CREATE DATABASE school_appointments;
 
 USE school_appointments;
 
@@ -12,7 +11,7 @@ CREATE TABLE appointments (
     status ENUM('Pending', 'Approved', 'Declined') DEFAULT 'Pending'
 );
 
-USE wsers
+USE users
     
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,

@@ -131,12 +131,10 @@ public class AppointmentScheduler extends JFrame {
         String reason = reasonArea.getText().trim();
 
         try {
-            // Parse date
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             java.util.Date parsedDate = sdf.parse(dateStr);
             java.sql.Date sqlDate = new java.sql.Date(parsedDate.getTime());
 
-            // Parse time
             java.sql.Time sqlTime = java.sql.Time.valueOf(timeStr);
 
             try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {

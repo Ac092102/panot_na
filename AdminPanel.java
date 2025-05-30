@@ -18,7 +18,6 @@ public class AdminPanel extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Gradient background
         JPanel gradientPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -31,7 +30,6 @@ public class AdminPanel extends JFrame {
         gradientPanel.setLayout(new BorderLayout(20, 20));
         gradientPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
 
-        // Table setup
         model = new DefaultTableModel(new String[]{"ID", "Name", "Date", "Time", "Reason", "Status"}, 0);
         appointmentTable = new JTable(model);
         styleTable(appointmentTable);
@@ -42,7 +40,6 @@ public class AdminPanel extends JFrame {
         scrollPane.setOpaque(false);
         scrollPane.getViewport().setOpaque(false);
 
-        // Buttons panel
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setOpaque(false);
         JButton approveBtn = createButton("Approve", new Color(76, 175, 80));
@@ -50,12 +47,10 @@ public class AdminPanel extends JFrame {
         buttonsPanel.add(approveBtn);
         buttonsPanel.add(declineBtn);
 
-        // Add components
         gradientPanel.add(scrollPane, BorderLayout.CENTER);
         gradientPanel.add(buttonsPanel, BorderLayout.SOUTH);
         add(gradientPanel);
 
-        // Button logic
         approveBtn.addActionListener(e -> updateStatus("approved"));
         declineBtn.addActionListener(e -> updateStatus("declined"));
 
